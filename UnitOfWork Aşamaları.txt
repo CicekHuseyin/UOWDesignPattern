@@ -1,0 +1,21 @@
+Asp.NetCore web app açıyorsun
+Soliton a BusinessLayer,DataAccssLayer,EntityLayer ekliyorsun.(Blank Solition)
+
+1-EntityLayer katmanında Concrete klasörü açıp içine Entity leri tanımlıyorsun.
+2-DataAccssLayer katmanında Concrete klasörü açıp içine Context tanımlıyorsun. (Context.cs)
+3-Migration yapıyorsun.(DataAccessLayer seçili olacak.)
+4-DataAccssLayer katmanında Abstract klasörü açıp IGenericDal tanımlıyorsun. Sonra aynı klasör içine diğerlerini tnımlıyorsun ICustomerDal,IProcessDal
+5-DataAccssLayer katmanında Repositories klasörü açıp GenericRepository yazıyorsun.(GenericRepository.cs)
+6-DataAccssLayer katmanında EntityFramework klasörü açıp tanımlıyorsun (EfCustomerDal,EfProcessDal.cs)
+7-DataAccssLayer katmanında UnitOfWork klasörü açıp öncelikle IUnitOfWorkDal.cs oluşturup aynı klasöre UnitOfWork.cs yi oluşturuyorsun.
+8-Business katmanında Abstract klasörünün içine IGenericeService.cs oluştur. Sonra aynı klasöre ICustomerService ve IProcessService oluştur.
+9-Business katmanında Concreate klasörünün içine CustomerManager ve IProcessManager oluştur.
+10-Controller oluştur. Endpoint tanımla(SendMoneyController.cs)
+11-View oluştur.
+12-Çalışmaz. Çünkü Program.cs gerekli konfigürasyonları yazmadın.
+Program.cs:
+builder.Services.AddDbContext<Context>();
+builder.Services.AddScoped<ICustomerDal, EfCustomerDal>();
+builder.Services.AddScoped<ICustomerService, CustomerManager>();
+builder.Services.AddScoped<IUnitOfWorkDal, UnitOfWorkDal>();
+
